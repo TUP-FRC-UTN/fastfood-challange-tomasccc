@@ -1,0 +1,34 @@
+<div class="container" style="border: 2px solid black;">
+    <div class="row">
+        <div class="col-md-12">
+        <h1>Restaurant</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Pedido</th>
+                    <th scope="col">Número</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @for(pe of pedidoService.pedidos;track $index){
+                        <tr>
+                            <th scope="row">{{pe.id}}</th>
+                            <td>{{pe.name}}</td>
+                            <td>{{pe.description}}</td>
+                            <td>{{pe.number}}</td>
+                        </tr>
+                    }
+                </tbody>
+              </table>
+        </div>
+    </div>
+    <div class="row">
+        <app-point-of-sell></app-point-of-sell>
+    </div>
+</div>
