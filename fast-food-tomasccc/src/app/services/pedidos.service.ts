@@ -16,6 +16,7 @@ export class PedidosService {
   constructor() { }
 
   addPedido(pedido:Pedido){
+    pedido.id = this.pedidos.length + 1;
     this.pedidos.push(pedido);
   }
 

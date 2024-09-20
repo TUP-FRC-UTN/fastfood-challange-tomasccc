@@ -1,8 +1,21 @@
-<form #myForm="ngForm" action="">
-    <div class="form-group">
+<form #myForm="ngForm" class="form container mt-4" action="submit" (ngSubmit)="onSubmit(myForm)">
+    <div class="container">
+        <h2 class="text-center">Punto de Venta</h2>
     </div>
     <div class="form-group">
+        <label for="name">Cliente</label>
+        <input #cliente="ngModel" type="text" class="form-control" id="name" name="name" [(ngModel)]="pedido.name" required>
+        @if(cliente.touched){
+            <span class="text-warning mt-2">Este campo es requerido.</span>
+        }
     </div>
-    <button type="submit" class="btn btn-primary" (click)="pedidoService.addPedido(pedido)">Agregar</button>
-
+    <div class="form-group">
+        <label for="price">Pedido</label>
+        <input type="text" class="form-control" id="plato" #plato1="ngModel"
+        name="plato" [(ngModel)]="pedido.description" required minlength="5">
+        @if(plato1.invalid && (plato1.dirty || plato1.touched)){
+            <span class="text-danger mt-2">El pedido debe tener al menos 5 caracteres</span>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="myForm.invalid">Agregar</button>
 </form>
